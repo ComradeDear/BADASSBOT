@@ -1,13 +1,13 @@
 {
-  "name": "BADASS-BOT USERBOT",
-  "description": "A simple Telegram userbot based on Telethon ",
+  "name": "BADASSBOT",
+  "description": "A simple Telegram userbot based on Telethon .",
   "logo": "https://telegra.ph/file/3d60313110c58684b31ea.jpg",
   "keywords": [
     "plugin",
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/Comrade dear/BADASSBOT/",
+  "repository": "https://github.com/ComradeDear/BADASSBOT/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
@@ -24,7 +24,7 @@
       "value": ""
     },
     "STRING_SESSION": {
-      "description": "Give any telethon string here ",
+      "description": "Give any telethon string here.",
       "value": ""
     },
     "TG_BOT_USERNAME": {
@@ -49,16 +49,7 @@
       "description": "Required for updating the bot and other stuff get it from https://dashboard.heroku.com/account",
       "value": "",
       "required": false
-    },
-    "HEROKU_APP_NAME": {
-      "description": "YOUR app name ",
-      "value": "",
-      "required": false
-    },
-    "TZ": {
-      "description": "Required for Correct Time on autopic/get time. Know your timezone from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
-      "value": "Asia/Kolkata",
-      "required": false
+    }
   },
   "addons": [{
     "plan": "heroku-postgresql",
@@ -80,5 +71,5 @@
     "url": "https://github.com/chrismytton/heroku-buildpack-jq"
   },{
     "url": "heroku/python"
-  }]
+  }] 
 }
