@@ -6,7 +6,7 @@ from telethon import Button, functions
 from telethon.events import CallbackQuery
 from telethon.utils import get_display_name
 
-from userbot import catub
+from userbot import bbub
 from userbot.core.logger import logging
 
 from ..Config import Config
@@ -48,9 +48,9 @@ async def do_pm_permit_action(event, chat):  # sourcery no-metrics
     if str(chat.id) not in PM_WARNS:
         PM_WARNS[str(chat.id)] = 0
     try:
-        MAX_FLOOD_IN_PMS = int(gvarstatus("MAX_FLOOD_IN_PMS") or 6)
+        MAX_FLOOD_IN_PMS = int(gvarstatus("MAX_FLOOD_IN_PMS") or 3)
     except (ValueError, TypeError):
-        MAX_FLOOD_IN_PMS = 6
+        MAX_FLOOD_IN_PMS = 3
     totalwarns = MAX_FLOOD_IN_PMS + 1
     warns = PM_WARNS[str(chat.id)] + 1
     remwarns = totalwarns - warns
@@ -141,15 +141,15 @@ Don't spam my inbox. say reason and wait until my response.__"""
         else:
             PM_PIC = gvarstatus("pmpermit_pic")
             if PM_PIC:
-                CAT = [x for x in PM_PIC.split()]
-                PIC = list(CAT)
-                CAT_IMG = random.choice(PIC)
+                BADASS = [x for x in PM_PIC.split()]
+                PIC = list(BADASS)
+                BADASS_IMG = random.choice(PIC)
             else:
-                CAT_IMG = None
-            if CAT_IMG is not None:
+                BADASS_IMG = None
+            if BADASS_IMG is not None:
                 msg = await event.client.send_file(
                     chat.id,
-                    CAT_IMG,
+                    BADASS_IMG,
                     caption=USER_BOT_NO_WARN,
                     reply_to=reply_to_id,
                     force_document=False,
@@ -401,7 +401,7 @@ Now you can't do anything unless my master comes online and unblocks you.**"
         return
 
 
-@catub.cat_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
+@bbub.bb_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def on_new_private_message(event):
     if gvarstatus("pmpermit") is None:
         return
@@ -423,7 +423,7 @@ async def on_new_private_message(event):
     await do_pm_permit_action(event, chat)
 
 
-@catub.cat_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
+@bbub.bb_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def you_dm_other(event):
     if gvarstatus("pmpermit") is None:
         return
@@ -475,7 +475,7 @@ async def you_dm_other(event):
         sql.add_collection("pmmessagecache", PMMESSAGE_CACHE, {})
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(rb"show_pmpermit_options")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(rb"show_pmpermit_options")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit these options are for users who messages you, not for you"
@@ -507,7 +507,7 @@ __Let's make this smooth and let me know why you are here.__
     await event.edit(text, buttons=buttons)
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_enquire_something")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(rb"to_enquire_something")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit this options for user who messages you. not for you"
@@ -528,7 +528,7 @@ Then we can extend this conversation more but not right now.__"""
     await event.edit(text)
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_request_something")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(rb"to_request_something")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit this options for user who messages you. not for you"
@@ -550,7 +550,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(text)
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_chat_with_my_master")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(rb"to_chat_with_my_master")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit these options are for users who message you. not for you"
@@ -570,7 +570,7 @@ some other time. Right now I am a little busy. when I come online and if I am fr
     await event.edit(text)
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(rb"to_spam_my_master_inbox")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(rb"to_spam_my_master_inbox")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == event.client.uid:
         text = "Idoit these options are for users who message you. not for you"
@@ -603,7 +603,7 @@ async def on_plug_in_callback_query_handler(event):
     await event.edit(text)
 
 
-@catub.cat_cmd(
+@bbub.cat_cmd(
     pattern="pmguard (on|off)$",
     command=("pmguard", plugin_category),
     info={
@@ -631,20 +631,20 @@ async def pmpermit_on(event):
         await edit_delete(event, "__Pmpermit is already disabled for your account__")
 
 
-@catub.cat_cmd(
-    pattern="pmmenu (on|off)$",
-    command=("pmmenu", plugin_category),
+@bbub.bb_cmd(
+    pattern="pmper (on|off)$",
+    command=("pmper", plugin_category),
     info={
-        "header": "To turn on or turn off pmmenu.",
+        "header": "To turn on or turn off pmper.",
         "usage": "{tr}pmmenu on/off",
     },
 )
 async def pmpermit_on(event):
-    "Turn on/off pmmenu."
+    "Turn on/off pmper."
     input_str = event.pattern_match.group(1)
     if input_str == "off":
-        if gvarstatus("pmmenu") is None:
-            addgvar("pmmenu", "false")
+        if gvarstatus("pmper") is None:
+            addgvar("pmper", "false")
             await edit_delete(
                 event,
                 "__Pmpermit Menu has been disabled for your account successfully.__",
@@ -653,8 +653,8 @@ async def pmpermit_on(event):
             await edit_delete(
                 event, "__Pmpermit Menu is already disabled for your account__"
             )
-    elif gvarstatus("pmmenu") is not None:
-        delgvar("pmmenu")
+    elif gvarstatus("pmper") is not None:
+        delgvar("pmper")
         await edit_delete(
             event, "__Pmpermit Menu has been enabled for your account successfully__"
         )
@@ -664,7 +664,7 @@ async def pmpermit_on(event):
         )
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="(a|approve)(?:\s|$)([\s\S]*)",
     command=("approve", plugin_category),
     info={
@@ -740,7 +740,7 @@ async def approve_p_m(event):  # sourcery no-metrics
         )
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="(da|disapprove)(?:\s|$)([\s\S]*)",
     command=("disapprove", plugin_category),
     info={
@@ -791,7 +791,7 @@ async def disapprove_p_m(event):
         )
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="block(?:\s|$)([\s\S]*)",
     command=("block", plugin_category),
     info={
@@ -847,7 +847,7 @@ async def block_p_m(event):
     )
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="unblock(?:\s|$)([\s\S]*)",
     command=("unblock", plugin_category),
     info={
@@ -880,7 +880,7 @@ async def unblock_pm(event):
     )
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="listapproved$",
     command=("listapproved", plugin_category),
     info={
