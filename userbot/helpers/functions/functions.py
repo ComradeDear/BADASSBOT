@@ -274,7 +274,7 @@ async def waifutxt(text, chat_id, reply_to_id, bot):
         63,
     ]
     sticcers = await bot.inline_query("stickerizerbot", f"#{choice(animus)}{text}")
-    cat = await sticcers[0].click("me", hide_via=True)
-    if cat:
-        await bot.send_file(int(chat_id), cat, reply_to=reply_to_id)
-        await cat.delete()
+    bb = await sticcers[0].click("me", hide_via=True)
+    if bb:
+        await bot.send_file(int(chat_id), bb, reply_to=reply_to_id)
+        await bb.delete()
