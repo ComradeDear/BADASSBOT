@@ -1,0 +1,65 @@
+{
+  "name": "𝗕𝗔𝗗𝗔𝗦𝗦𝗕𝗢𝗧 - UserBot",
+  "description": "An advanced Telethon Userbot, from @dear_comradee",
+  "logo": "https://telegra.ph/file/49af9b51648a4e304b9a6.jpg",
+  "keywords": [
+   "telegram",
+   "userbot",
+   "userbot",
+   "modular",
+   "productivity"
+  ],
+  "repository": "https://github.com/ComradeDear/BADASSBOT",
+  "website": "https://github.com/ComradeDear/BADASSBOT",
+  "success_url": "https://t.me/badassbot_support",
+  "stack": "container",
+  "env": {
+   "ENV": {
+    "description": "Setting this to ANYTHING will enable heroku.",
+    "value": "ANYTHING"
+   },
+   "APP_ID": {
+    "description": "Get this value from my.telegram.org! Please do not steal",
+    "value": ""
+   },
+   "API_HASH": {
+    "description": "Get this value from my.telegram.org! Please do not steal",
+    "value": ""
+   },
+   "STRING_SESSION": {
+    "description": ".",
+    "value": ""
+   },
+   "PM_PERMIT_GROUP_ID": {
+      "description": "Put an Group Id Same As PRIVATE_GROUP_ID Required For Pmpermit plugin.",
+      "value": "",
+      "required": true
+   }, 
+   "SPAM": {
+    "description": "Number of messages one can send in your PM before being approved. By default, it is 5.",
+    "value": "5",
+    "required": false
+   },
+   "ALIVE_PIC": {
+    "description": "telegra.ph link to theimage you want as pic when you put .awake, leave blank for Default",
+    "value": "",
+    "required": false
+   },
+   "PMPERMIT_PIC": {
+   "description": "telegra.ph link to theimage you want as pmpermit pic, leave blank for default one!",
+   "value": "",
+   "required": false
+   },
+   "TZ": {
+    "description": "Required for Correct Time on autopic/get time. Know your timezone from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
+    "value": "",
+    "required": false
+   }
+  },
+  "addons": [{
+   "plan": "heroku-postgresql",
+   "options": {
+    "version": "12"
+   }
+  }]
+}
