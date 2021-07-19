@@ -1,84 +1,84 @@
 {
-  "name": "BADASSBOT- UserBot",
-  "description": "An advanced Telethon Userbot, from @DEAR_COMRADEE",
-  "logo": "https://telegra.ph/file/49af9b51648a4e304b9a6.jpg",
+  "name": "BADASS-BOT USERBOT",
+  "description": "A simple Telegram userbot based on Telethon ",
+  "logo": "https://telegra.ph/file/3d60313110c58684b31ea.jpg",
   "keywords": [
-   "telegram",
-   "userbot",
-   "userbot",
-   "modular",
-   "productivity"
+    "plugin",
+    "modular",
+    "productivity"
   ],
-  "repository": "https://github.com/ComradeDear/BADASSBOT",
-  "website": "https://github.com/ComradeDear/BADASSBOT",
-  "success_url": "https://t.me/badassbot_support",
-  "stack": "container",
+  "repository": "https://github.com/Comrade dear/BADASSBOT/",
+  "website": "#TODO",
+  "success_url": "#TODO",
   "env": {
-   "ENV": {
-    "description": "Setting this to ANYTHING will enable heroku.",
-    "value": "ANYTHING"
-   },
-   "APP_ID": {
-    "description": "Get this value from my.telegram.org! Please do not steal",
-    "value": ""
-   },
-   "API_HASH": {
-    "description": "Get this value from my.telegram.org! Please do not steal",
-    "value": ""
-   },
-   "STRING_SESSION": {
-    "description": ".",
-    "value": ""
-   },  
-   "CUSTOM_PMPERMIT": {
-    "description": "The message that appears when someone PM's you. Leave it as such for default message.",
-    "value": "Do not spam here, else you will be blocked automatically."
-   },
-   "PM_PERMIT_GROUP_ID": {
-      "description": "Put an Group Id Same As PRIVATE_GROUP_ID Required For Pmpermit plugin.",
-      "value": "",
-      "required": true
-   }, 
+    "ALIVE_NAME": {
+      "description": "give your name",
+      "value": ""
+    },
+    "APP_ID": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org! Please do not steal",
+      "value": ""
+    },
+    "STRING_SESSION": {
+      "description": "Give any telethon string here ",
+      "value": ""
+    },
+    "TG_BOT_USERNAME": {
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the username of your bot",
+      "value": ""
+    },
+    "TG_BOT_TOKEN": {
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the token of your bot.Worth it. Get it.",
+      "value": ""
+    },
+    "COMMAND_HAND_LER": {
+      "description": "Set this one with only one the symbol to use it before your command to run like . , ' `",
+      "value": ".",
+      "required": false
+    },
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable heroku.",
+      "value": "ANYTHING",
+      "required": false
+    },
     "HEROKU_API_KEY": {
-    "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.Required for updater to work.",
-    "value": "",
-    "required": true
-   },
-   "PLUGIN_CHANNEL": {
-    "description": "Channel Where You Save Your Plugins",
-    "value": "",
-    "required": true 
-   },
-   "TG_BOT_TOKEN_BF_HER": {
-    "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot. Get it else .help won't work.",
-    "value": "",
-    "required": true
-   },
-   "TG_BOT_USER_NAME_BF_HER": {
-    "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the username of your bot. Needed for .help to work.",
-    "value": "",
-    "required": true
-   },
-   "ALIVE_NAME": {
-    "description": "Put Your Name here...like @dear_comradee. ",
-    "value": "",
-    "required": true
-   }, 
-   "SPAM": {
-    "description": "Number of messages one can send in your PM before being approved. By default, it is 5.",
-    "value": "5",
-    "required": false
-   },
-   "TZ": {
-    "description": "Required for Correct Time on autopic/get time. Know your timezone from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
-    "value": "",
-    "required": false
-   }
+      "description": "Required for updating the bot and other stuff get it from https://dashboard.heroku.com/account",
+      "value": "",
+      "required": false
+    },
+    "HEROKU_APP_NAME": {
+      "description": "YOUR app name ",
+      "value": "",
+      "required": false
+    },
+    "TZ": {
+      "description": "Required for Correct Time on autopic/get time. Know your timezone from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
+      "value": "Asia/Kolkata",
+      "required": false
   },
   "addons": [{
-   "plan": "heroku-postgresql",
-   "options": {
-    "version": "12"
-   }
+    "plan": "heroku-postgresql",
+    "options": {
+      "version": "12"
+    }
+  }],
+  "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-google-chrome"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-chromedriver"
+  },{
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  },{
+    "url": "https://github.com/heroku/heroku-buildpack-apt.git"
+  },{
+    "url": "https://github.com/chrismytton/heroku-buildpack-jq"
+  },{
+    "url": "heroku/python"
   }]
 }
