@@ -11,7 +11,7 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from userbot import StartTime, catub, catversion
+from userbot import StartTime, bbub, bbversion
 
 from ..Config import Config
 from ..core.managers import edit_or_reply
@@ -23,7 +23,7 @@ from . import mention
 plugin_category = "utils"
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="alive$",
     command=("alive", plugin_category),
     info={
@@ -46,13 +46,12 @@ async def amireallyalive(event):
         CAT = [x for x in CAT_IMG.split()]
         A_IMG = list(CAT)
         PIC = random.choice(A_IMG)
-        cat_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-        cat_caption += f"**{EMOJI} Database :** `{check_sgnirts}`\n"
-        cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-        cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
-        cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-        cat_caption += f"**{EMOJI} Uptime :** `{uptime}\n`"
-        cat_caption += f"**{EMOJI} Master:** {mention}\n"
+        badass_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
+        badass_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
+        badass_caption += f"**{EMOJI} BADASSuserbot Version :** `{badassversion}`\n"
+        badass_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
+        badass_caption += f"**{EMOJI} Uptime :** `{uptime}\n`"
+        badass_caption += f"**{EMOJI} Master:** {mention}\n"
         try:
             await event.client.send_file(
                 event.chat_id, PIC, caption=cat_caption, reply_to=reply_to_id
@@ -67,16 +66,15 @@ async def amireallyalive(event):
         await edit_or_reply(
             event,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-            f"**{EMOJI} Database :** `{check_sgnirts}`\n"
             f"**{EMOJI} Telethon Version :** `{version.__version__}\n`"
-            f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
+            f"**{EMOJI} BADASSuserbot Version :** `{BADASSversion}`\n"
             f"**{EMOJI} Python Version :** `{python_version()}\n`"
             f"**{EMOJI} Uptime :** `{uptime}\n`"
             f"**{EMOJI} Master:** {mention}\n",
         )
 
 
-@catub.cat_cmd(
+@bbub.bb_cmd(
     pattern="ialive$",
     command=("ialive", plugin_category),
     info={
@@ -91,17 +89,17 @@ async def amireallyalive(event):
     "A kind of showing bot details by your inline bot"
     reply_to_id = await reply_id(event)
     EMOJI = gvarstatus("ALIVE_EMOJI") or "  ✥ "
-    cat_caption = f"**Catuserbot is Up and Running**\n"
-    cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
-    cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
-    cat_caption += f"**{EMOJI} Master:** {mention}\n"
+    badass_caption = f"**BADASS-Userbot is Up and Running**\n"
+    badass_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
+    badass_caption += f"**{EMOJI} BADASS-userbot Version :** `{BADASSversion}`\n"
+    badass_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
+    badass_caption += f"**{EMOJI} Master:** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, cat_caption)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(b"stats")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(b"stats")))
 async def on_plug_in_callback_query_handler(event):
     statstext = await catalive(StartTime)
     await event.answer(statstext, cache_time=0, alert=True)
