@@ -12,7 +12,7 @@ from userbot import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 
 from ..Config import Config
 from ..core.logger import logging
-from ..core.session import catub
+from ..core.session import bbub
 from ..helpers.utils import install_pip
 from ..sql_helper.global_collection import (
     del_keyword_collectionlist,
@@ -22,7 +22,7 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
 
-LOGS = logging.getLogger("CatUserbot")
+LOGS = logging.getLogger("BADASSBOTUserbot")
 cmdhr = Config.COMMAND_HAND_LER
 
 
@@ -31,7 +31,7 @@ async def setup_bot():
     To set up bot for userbot
     """
     try:
-        await catub.connect()
+        await bbub.connect()
         config = await catub(functions.help.GetConfigRequest())
         for option in config.dc_options:
             if option.ip_address == catub.session.server_address:
@@ -40,10 +40,10 @@ async def setup_bot():
                         f"Fixed DC ID in session from {catub.session.dc_id}"
                         f" to {option.id}"
                     )
-                catub.session.set_dc(option.id, option.ip_address, option.port)
-                catub.session.save()
+                bbub.session.set_dc(option.id, option.ip_address, option.port)
+                bbub.session.save()
                 break
-        bot_details = await catub.tgbot.get_me()
+        bot_details = await bbub.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         # await catub.start(bot_token=Config.TG_BOT_USERNAME)
         catub.me = await catub.get_me()
@@ -61,11 +61,11 @@ async def startupmessage():
     """
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await catub.tgbot.send_file(
+            Config.BBUBLOGO = await catub.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/4e3ba8e8f7e535d5a2abe.jpg",
-                caption="**Your CatUserbot has been started successfully.**",
-                buttons=[(Button.url("Support", "https://t.me/catuserbot"),)],
+                "https://telegra.ph/file/49af9b51648a4e304b9a6.jpg",
+                caption="**Your BADASSBOT has been started successfully.**",
+                buttons=[(Button.url("Support", "https://t.me/badassbot_support"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -79,12 +79,12 @@ async def startupmessage():
         return None
     try:
         if msg_details:
-            await catub.check_testcases()
-            message = await catub.get_messages(msg_details[0], ids=msg_details[1])
+            await bbub.check_testcases()
+            message = await bbub.get_messages(msg_details[0], ids=msg_details[1])
             text = message.text + "\n\n**Ok Bot is Back and Alive.**"
-            await catub.edit_message(msg_details[0], msg_details[1], text)
+            await bbub.edit_message(msg_details[0], msg_details[1], text)
             if gvarstatus("restartupdate") is not None:
-                await catub.send_message(
+                await bbub.send_message(
                     msg_details[0],
                     f"{cmdhr}ping",
                     reply_to=msg_details[1],
