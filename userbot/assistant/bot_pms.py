@@ -8,7 +8,7 @@ from telethon.errors import UserIsBlockedError
 from telethon.events import CallbackQuery, StopPropagation
 from telethon.utils import get_display_name
 
-from userbot import Config, catub
+from userbot import Config, bbub
 
 from ..core import check_owner, pool
 from ..core.logger import logging
@@ -64,7 +64,7 @@ async def check_bot_started_users(user, event):
         await event.client.send_message(BOTLOG_CHATID, notification)
 
 
-@catub.bot_cmd(
+@bbub.bot_cmd(
     pattern=f"^/start({botusername})?([\s]+)?$",
     incoming=True,
     func=lambda e: e.is_private,
@@ -106,13 +106,13 @@ async def bot_start(event):
             start_msg = f"Hey! 👤{mention},\
                         \nI am {my_mention}'s assistant bot.\
                         \nYou can contact to my master from here.\
-                        \n\nPowered by [Catuserbot](https://t.me/catuserbot)"
+                        \n\nPowered by [BADASSBOT](https://t.me/badassbot_support)"
         buttons = [
             (
-                Button.url("Repo", "https://github.com/sandy1709/catuserbot"),
+                Button.url("Repo", "https://github.com/ComradeDear/BADASSBOT"),
                 Button.url(
                     "Deploy",
-                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
+                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FComradeDear%2FBADASSBOT&template=https%3A%2F%2Fgithub.com%2FComradeDear%2FBADASSBOT",
                 ),
             )
         ]
@@ -139,7 +139,7 @@ async def bot_start(event):
         await check_bot_started_users(chat, event)
 
 
-@catub.bot_cmd(incoming=True, func=lambda e: e.is_private)
+@bbub.bot_cmd(incoming=True, func=lambda e: e.is_private)
 async def bot_pms(event):  # sourcery no-metrics
     chat = await event.get_chat()
     if check_is_black_list(chat.id):
@@ -196,7 +196,7 @@ async def bot_pms(event):  # sourcery no-metrics
                     )
 
 
-@catub.bot_cmd(edited=True)
+@bbub.bot_cmd(edited=True)
 async def bot_pms_edit(event):  # sourcery no-metrics
     chat = await event.get_chat()
     if check_is_black_list(chat.id):
@@ -289,7 +289,7 @@ async def handler(event):
                 LOGS.error(str(e))
 
 
-@catub.bot_cmd(
+@bbub.bot_cmd(
     pattern=f"^/uinfo$",
     from_users=Config.OWNER_ID,
 )
@@ -407,7 +407,7 @@ async def send_flood_alert(user_) -> None:
         FloodConfig.ALERT[user_.id]["fa_id"] = fa_msg.id
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(b"bot_pm_ban_([0-9]+)")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(b"bot_pm_ban_([0-9]+)")))
 @check_owner
 async def bot_pm_ban_cb(c_q: CallbackQuery):
     user_id = int(c_q.pattern_match.group(1))
@@ -449,7 +449,7 @@ def is_flood(uid: int) -> Optional[bool]:
         return True
 
 
-@catub.tgbot.on(CallbackQuery(data=re.compile(b"toggle_bot-antiflood_off$")))
+@bbub.tgbot.on(CallbackQuery(data=re.compile(b"toggle_bot-antiflood_off$")))
 @check_owner
 async def settings_toggle(c_q: CallbackQuery):
     if gvarstatus("bot_antif") is None:
@@ -459,8 +459,8 @@ async def settings_toggle(c_q: CallbackQuery):
     await c_q.edit("BOT_ANTIFLOOD is now disabled !")
 
 
-@catub.bot_cmd(incoming=True, func=lambda e: e.is_private)
-@catub.bot_cmd(edited=True, func=lambda e: e.is_private)
+@bbub.bot_cmd(incoming=True, func=lambda e: e.is_private)
+@bbub.bot_cmd(edited=True, func=lambda e: e.is_private)
 async def antif_on_msg(event):
     if gvarstatus("bot_antif") is None:
         return
