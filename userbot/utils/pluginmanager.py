@@ -8,12 +8,12 @@ from ..Config import Config
 from ..core import LOADED_CMDS, PLG_INFO
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..core.session import catub
+from ..core.session import bbub
 from ..helpers.tools import media_type
-from ..helpers.utils import _cattools, _catutils, _format, install_pip, reply_id
+from ..helpers.utils import _bbtools, _bbutils, _format, install_pip, reply_id
 from .decorators import admin_cmd, sudo_cmd
 
-LOGS = logging.getLogger("CatUserbot")
+LOGS = logging.getLogger("BADASSBOTUserbot")
 
 
 def load_module(shortname, plugin_path=None):
@@ -37,17 +37,17 @@ def load_module(shortname, plugin_path=None):
         checkplugins(path)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
-        mod.bot = catub
+        mod.bot = bbub
         mod.LOGS = LOGS
         mod.Config = Config
         mod._format = _format
-        mod.tgbot = catub.tgbot
+        mod.tgbot = bbub.tgbot
         mod.sudo_cmd = sudo_cmd
         mod.CMD_HELP = CMD_HELP
         mod.reply_id = reply_id
         mod.admin_cmd = admin_cmd
-        mod._catutils = _catutils
-        mod._cattools = _cattools
+        mod._catutils = _bbutils
+        mod._cattools = _bbtools
         mod.media_type = media_type
         mod.edit_delete = edit_delete
         mod.install_pip = install_pip
