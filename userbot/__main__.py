@@ -5,7 +5,7 @@ from userbot import BOTLOG_CHATID, HEROKU_APP, PM_LOGGER_GROUP_ID
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import catub
+from .core.session import bbub
 from .utils import (
     add_bot_to_logger_group,
     ipchange,
@@ -15,7 +15,7 @@ from .utils import (
     verifyLoggerGroup,
 )
 
-LOGS = logging.getLogger("CatUserbot")
+LOGS = logging.getLogger("BADASSBOT")
 
 print(userbot.__copyright__)
 print("Licensed under the terms of the " + userbot.__license__)
@@ -31,12 +31,12 @@ except Exception as e:
     sys.exit()
 
 
-class CatCheck:
+class BadassCheck:
     def __init__(self):
         self.sucess = True
 
 
-Catcheck = CatCheck()
+Badasscheck = BadassCheck()
 
 
 async def startup_process():
@@ -50,8 +50,8 @@ async def startup_process():
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     print("Yay your userbot is officially working.!!!")
     print(
-        f"Congratulation, now type {cmdhr}alive to see message if catub is live\
-        \nIf you need assistance, head to https://t.me/catuserbot_support"
+        f"Congratulation, now type {cmdhr}alive to see message if badass ub is live\
+        \nIf you need assistance, head to https://t.me/badassbot_support"
     )
     print("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖")
     await verifyLoggerGroup()
@@ -63,15 +63,15 @@ async def startup_process():
     return
 
 
-catub.loop.run_until_complete(startup_process())
+bbub.loop.run_until_complete(startup_process())
 
 if len(sys.argv) not in (1, 3, 4):
-    catub.disconnect()
-elif not Catcheck.sucess:
+    bbub.disconnect()
+elif not Badasscheck.sucess:
     if HEROKU_APP is not None:
         HEROKU_APP.restart()
 else:
     try:
-        catub.run_until_disconnected()
+        bbub.run_until_disconnected()
     except ConnectionError:
         pass
