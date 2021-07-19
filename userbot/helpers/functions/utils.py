@@ -46,7 +46,7 @@ async def get_readable_time(seconds: int) -> str:
 # gban
 
 
-async def admin_groups(catub):
+async def admin_groups(bbub):
     catgroups = []
     async for dialog in catub.iter_dialogs():
         entity = dialog.entity
@@ -62,7 +62,7 @@ async def admin_groups(catub):
 # https://github.com/pokurt/LyndaRobot/blob/7556ca0efafd357008131fa88401a8bb8057006f/lynda/modules/helper_funcs/string_handling.py#L238
 
 
-async def extract_time(cat, time_val):
+async def extract_time(bb, time_val):
     if any(time_val.endswith(unit) for unit in ("s", "m", "h", "d", "w")):
         unit = time_val[-1]
         time_num = time_val[:-1]  # type: str
